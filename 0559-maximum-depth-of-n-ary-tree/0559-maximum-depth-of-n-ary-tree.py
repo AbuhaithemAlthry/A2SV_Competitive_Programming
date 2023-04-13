@@ -15,5 +15,4 @@ class Solution:
         for child in root.children:
             depth = max(depth, self.maxDepth(child))
         
-        print ('root ' + str(root.val) + ' depth ' + str(depth + 1))
         return depth + 1 

@@ -10,8 +10,6 @@ class Solution:
         if not root:
             return []
         def dfs(node=root, res=[root.val]):
-            if not node:
-                return
             if not (node.left or node.right):
                 if sum(res) == targetSum:
                     ans.append(res)

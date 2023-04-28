@@ -1,10 +1,19 @@
 class Solution:
     def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
-        visited = [False]*len(rooms)
-        def dfs(node):
-            visited[node] = True
-            for neighbour in rooms[node]:
-                if not visited[neighbour]:
-                    dfs(neighbour)
-        dfs(0)
-        return all(visited)
+        visited = set()
+        visited.add(0)
+        
+        def bfs(node):
+            queue = deque([node])
+
+            while queue:
+                print(queue)
+                node = queue.popleft()
+
+                for neighbour in rooms[node]:
+                    if neighbour not in visited:
+                        visited.add(neighbour)
+                        queue.append(neighbour)
+        
+        bfs(0)
+        return len(visited)==len(rooms)

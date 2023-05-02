@@ -1,21 +1,18 @@
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
-        n = len(nums)
+        
         result = []
-        visited = [0] * n
-
-        def backtrack(permutation):
-            if len(permutation) == n:
-                result.append(permutation[:])
-                return 
-
-            for i in range(n):
-                if visited[i] == 0:
-                    visited[i] = 1
-                    permutation.append(nums[i])
-                    backtrack(permutation)
-                    visited[i] = 0
-                    permutation.pop()
-
-        backtrack([])
+        
+        def dfs(picked, arr):
+            if len(arr) == len(nums):
+                result.append(arr)
+            
+			# picked is recording that the index that we picked. 
+			
+            for i in range(len(nums)):
+			    # meaning we havent picked index i 
+                if 1 << i & picked == 0:
+                    dfs(picked | 1 << i , arr + [nums[i]])
+        
+        dfs(0, [])
         return result

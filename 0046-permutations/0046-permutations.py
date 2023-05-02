@@ -4,7 +4,7 @@ class Solution:
         result = []
         def backtrack(l,r,nums) :
             if l==r :
-                return result.append(list(nums)) #We reached the end of the recursion
+                return result.append(nums[:]) #We reached the end of the recursion
                                                  #tree
             else : 
                 for i in range(l,r+1) :

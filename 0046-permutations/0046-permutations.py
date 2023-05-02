@@ -1,15 +1,21 @@
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
-        n=len(nums)
+        n = len(nums)
         result = []
-        def backtrack(l,r,nums) :
-            if l==r :
-                return result.append(nums[:]) #We reached the end of the recursion
-                                                 #tree
-            else : 
-                for i in range(l,r+1) :
-                    nums[l], nums[i] = nums[i], nums[l]
-                    backtrack(l+1,r,nums)
-                    nums[i],nums[l] = nums[l], nums[i]
-        backtrack(0,n-1,nums)
+        visited = [0] * n
+
+        def backtrack(permutation):
+            if len(permutation) == n:
+                result.append(permutation[:])
+                return 
+
+            for i in range(n):
+                if visited[i] == 0:
+                    visited[i] = 1
+                    permutation.append(nums[i])
+                    backtrack(permutation)
+                    visited[i] = 0
+                    permutation.pop()
+
+        backtrack([])
         return result

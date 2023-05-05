@@ -1,0 +1,23 @@
+n,m = map(int,input().split())
+arr1 = list(map(int,input().split()))
+arr2 = list(map(int,input().split()))
+ni,mi = 0,0
+res=[]
+
+while ni<n and mi<m:
+    if arr1[ni] >= arr2[mi]:
+        res.append(str(arr2[mi]))
+        mi+=1
+    else:
+        res.append(str(arr1[ni]))
+        ni+=1
+
+while ni<n:
+    res.append(str(arr1[ni]))
+    ni+=1
+while mi<m:
+    res.append(str(arr2[mi]))
+    mi+=1
+    
+ans = " ".join(res)
+print(ans)

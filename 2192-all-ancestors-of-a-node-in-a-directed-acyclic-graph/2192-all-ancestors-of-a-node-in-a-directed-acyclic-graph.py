@@ -3,7 +3,7 @@ class Solution:
         graph = defaultdict(list)
         incoming = [0] * (n)
         queue = deque()
-        res = [[] for i in range(n)]
+        res = [set() for i in range(n)]
         
         for pre,sour in edges:
             graph[pre].append(sour)
@@ -17,12 +17,14 @@ class Solution:
         while queue:
             pop = queue.popleft()
             for neigbour in graph[pop]:
-                res[neigbour].append(pop)
+                res[neigbour].add(pop)
+                
                 for i in res[pop]:
-                    if i not in res[neigbour]:
-                        res[neigbour].append(i)
+                    res[neigbour].add(i)
+                
                 incoming[neigbour]-=1
                 if (incoming[neigbour]==0):
                     queue.append(neigbour)
-        return [ sorted(res[i]) for i in range(len(res))]
+                    
+        return [ sorted(set(res[i])) for i in range(len(res))]
                     

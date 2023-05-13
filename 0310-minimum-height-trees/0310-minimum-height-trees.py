@@ -1,10 +1,9 @@
 class Solution:
     def findMinHeightTrees(self, n: int, edges: List[List[int]]) -> List[int]:
-            # edge cases
+
         if n <= 2:
             return [i for i in range(n)]
 
-        # Build the graph with the adjacency list
         neighbors = [[] for i in range(n)]
         for start, end in edges:
             neighbors[start].append(end)

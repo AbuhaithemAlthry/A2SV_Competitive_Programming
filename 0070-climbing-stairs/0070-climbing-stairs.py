@@ -6,4 +6,4 @@ class Solution:
         if self.memo[n]:
             return self.memo[n]
         self.memo[n] = self.climbStairs(n-1)+self.climbStairs(n-2)
-        return self.climbStairs(n-1)+self.climbStairs(n-2)
+        return self.memo[n]

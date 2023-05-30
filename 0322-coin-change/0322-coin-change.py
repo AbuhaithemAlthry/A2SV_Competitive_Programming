@@ -11,9 +11,9 @@ class Solution:
                 return 0
 
             for coin in coins:
-                best = min(best,count(remaining-coin)+1)
-            memo[remaining] = best
-            return best
+                best = min(best,count(remaining-coin))
+            memo[remaining] = best+1
+            return best+1
 
  
         val = count(amount)

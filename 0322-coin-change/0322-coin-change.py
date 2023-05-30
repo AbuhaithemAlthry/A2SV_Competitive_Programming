@@ -13,7 +13,7 @@ class Solution:
             for coin in coins:
                 best = min(best,count(remaining-coin))
             memo[remaining] = best+1
-            return best+1
+            return memo[remaining]
 
  
         val = count(amount)

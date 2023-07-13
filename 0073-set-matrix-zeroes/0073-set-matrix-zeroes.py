@@ -3,22 +3,27 @@ class Solution:
         """
         Do not return anything, modify matrix in-place instead.
         """
-        row = len(matrix)
-        col = len(matrix[0])
-        columns = [1] * col
-        rows = [1] * row
-        for i in range(row):
-            for j in range(col):
-                if matrix[i][j] == 0:
-                    columns[j] = 0
-                    rows[i] = 0
-                    
-        for i in range(row):
-            if not rows[i]:
-                for j in range(col):
-                    matrix[i][j] = 0
+        row, col = len(matrix), len(matrix[0])
+        row_zero = False
 
-        for i in range(col):
-            if not columns[i]:
-                for j in range(row):
-                    matrix[j][i] = 0
+        for r in range(row):
+            for c in range(col):
+                if matrix[r][c] == 0:
+                    matrix[0][c] = 0
+                    if r > 0:
+                        matrix[r][0] = 0
+                    else:
+                        row_zero = True
+
+        for r in range(1, row):
+            for c in range(1, col):
+                if matrix[0][c] == 0 or matrix[r][0] == 0:
+                    matrix[r][c] = 0
+
+        if matrix[0][0] == 0:
+            for r in range(row):
+                matrix[r][0] = 0
+
+        if row_zero:
+            for c in range(col):
+                matrix[0][c] = 0

@@ -7,28 +7,25 @@ class Solution:
             graph[a][b] = values[i]
             graph[b][a] = 1 / values[i]
         
-        def dfs(st,en,res):
-            # if st in visited:
-            #     return -1.0
-            
+        def dfs(st, en, res, visited):
             if st == en:
                 return res
             
             visited.add(st)
-            
+            tmp = -1.0
             for i in graph[st]:
                 if i not in visited:
-                    tmp = dfs(i,en,res*graph[st][i])
+                    tmp = dfs(i, en, res * graph[st][i], visited)
                     if tmp != -1.0:
-                        return tmp
+                        break
+            
+            return tmp
 
-            return -1.0
-        dfs
         res = []
         for a, b in queries:
             if a not in graph or b not in graph:
                 res.append(-1.0)
             else:
                 visited=set()
-                res.append(dfs(a,b,1))
+                res.append(dfs(a,b,1,visited))
         return res

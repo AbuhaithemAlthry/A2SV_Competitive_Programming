@@ -19,22 +19,20 @@ class Solution:
         queue.append((0, 0, "NONE"))
 
         while queue:
-            node, length, edgeColor = queue.popleft()
-
+            node ,length, color = queue.popleft()
             if answer[node] == -1:
                 answer[node] = length
-
-            if edgeColor != "RED":
-                for nbr in red[node]:
-                    if not visitedRed[nbr]:
-                        visitedRed[nbr] = True
-                        queue.append((nbr, length + 1, "RED"))
-
-            if edgeColor != "BLUE":
-                for nbr in blue[node]:
-                    if not visitedBlue[nbr]:
-                        visitedBlue[nbr] = True
-                        queue.append((nbr, length + 1, "BLUE"))
+            
+            if color != 'RED':
+                for child in red[node]:
+                    if not visitedRed[child]:
+                        visitedRed[child] = True
+                        queue.append((child, length+1, "RED"))
+            if color != 'BLUE':
+                for child in blue[node]:
+                    if not visitedBlue[child]:
+                        visitedBlue[child]=True
+                        queue.append((child, length+1, "BLUE"))
 
         return answer
 

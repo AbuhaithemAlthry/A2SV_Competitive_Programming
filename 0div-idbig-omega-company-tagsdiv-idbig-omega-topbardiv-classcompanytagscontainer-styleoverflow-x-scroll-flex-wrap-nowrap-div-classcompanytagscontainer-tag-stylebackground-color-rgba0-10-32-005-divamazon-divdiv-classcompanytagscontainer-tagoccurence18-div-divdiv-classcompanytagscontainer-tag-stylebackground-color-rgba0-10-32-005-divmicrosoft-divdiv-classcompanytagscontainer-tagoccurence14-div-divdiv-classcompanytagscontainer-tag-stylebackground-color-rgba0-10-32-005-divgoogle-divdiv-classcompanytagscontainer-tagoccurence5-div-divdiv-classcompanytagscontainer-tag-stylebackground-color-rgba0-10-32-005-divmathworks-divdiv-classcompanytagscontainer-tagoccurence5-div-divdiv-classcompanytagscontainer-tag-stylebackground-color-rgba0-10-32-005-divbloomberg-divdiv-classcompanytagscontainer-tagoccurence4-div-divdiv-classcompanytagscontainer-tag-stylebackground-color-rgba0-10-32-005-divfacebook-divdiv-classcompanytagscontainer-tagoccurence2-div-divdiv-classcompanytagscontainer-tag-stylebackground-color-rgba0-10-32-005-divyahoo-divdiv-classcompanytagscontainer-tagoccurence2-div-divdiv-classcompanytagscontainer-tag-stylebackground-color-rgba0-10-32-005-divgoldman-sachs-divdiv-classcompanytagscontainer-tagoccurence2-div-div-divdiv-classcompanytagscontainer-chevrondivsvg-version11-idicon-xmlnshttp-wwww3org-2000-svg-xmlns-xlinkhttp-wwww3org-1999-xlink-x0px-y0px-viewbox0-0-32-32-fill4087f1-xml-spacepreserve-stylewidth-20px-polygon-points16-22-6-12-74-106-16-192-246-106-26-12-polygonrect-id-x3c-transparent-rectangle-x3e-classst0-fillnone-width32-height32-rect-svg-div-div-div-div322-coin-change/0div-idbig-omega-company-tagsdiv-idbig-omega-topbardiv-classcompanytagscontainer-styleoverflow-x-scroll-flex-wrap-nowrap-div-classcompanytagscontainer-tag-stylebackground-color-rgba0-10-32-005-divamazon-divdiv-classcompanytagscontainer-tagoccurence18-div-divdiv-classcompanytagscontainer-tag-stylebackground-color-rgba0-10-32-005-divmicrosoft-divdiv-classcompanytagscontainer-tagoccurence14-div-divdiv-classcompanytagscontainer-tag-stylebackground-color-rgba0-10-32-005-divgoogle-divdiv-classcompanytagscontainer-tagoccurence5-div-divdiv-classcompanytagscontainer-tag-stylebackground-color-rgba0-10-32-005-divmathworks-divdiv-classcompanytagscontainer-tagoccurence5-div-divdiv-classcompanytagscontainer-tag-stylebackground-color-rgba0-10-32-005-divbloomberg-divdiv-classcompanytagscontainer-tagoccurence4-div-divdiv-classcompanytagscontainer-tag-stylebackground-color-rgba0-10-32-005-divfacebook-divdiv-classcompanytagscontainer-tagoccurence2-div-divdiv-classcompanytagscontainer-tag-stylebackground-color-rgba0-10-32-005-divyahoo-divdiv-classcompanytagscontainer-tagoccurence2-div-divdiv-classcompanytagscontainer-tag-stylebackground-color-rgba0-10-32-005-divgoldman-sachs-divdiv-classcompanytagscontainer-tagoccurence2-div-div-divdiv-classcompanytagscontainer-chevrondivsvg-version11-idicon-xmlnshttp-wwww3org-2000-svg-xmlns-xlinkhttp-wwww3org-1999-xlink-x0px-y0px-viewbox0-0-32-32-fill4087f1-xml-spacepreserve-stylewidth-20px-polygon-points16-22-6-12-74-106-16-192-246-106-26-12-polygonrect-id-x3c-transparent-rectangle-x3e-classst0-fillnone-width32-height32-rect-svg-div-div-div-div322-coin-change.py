@@ -1,15 +1,23 @@
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
-        @cache
-        
+        memo = {}  # Memoization dictionary
+
         def dfs(remain):
-            if remain==0:
+            if remain in memo:
+                return memo[remain]
+
+            if remain == 0:
                 return 0
-            if remain<0:
+            if remain < 0:
                 return float('inf')
-            s = float('inf')
+
+            min_count = float('inf')
             for coin in coins:
-                s = min(s,dfs(remain-coin))
-            return s + 1
-        
-        return dfs(amount) if dfs(amount)!=float('inf') else -1
+                count = dfs(remain - coin)
+                min_count = min(min_count, count + 1)
+
+            memo[remain] = min_count
+            return memo[remain]
+
+        result = dfs(amount)
+        return result if result != float('inf') else -1

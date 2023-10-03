@@ -16,7 +16,7 @@
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
-<pre style="position: relative;"><strong>Input</strong>
+<pre><strong>Input</strong>
 ["MapSum", "insert", "sum", "insert", "sum"]
 [[], ["apple", 3], ["ap"], ["app", 2], ["ap"]]
 <strong>Output</strong>
@@ -28,7 +28,7 @@ mapSum.insert("apple", 3);
 mapSum.sum("ap");           // return 3 (<u>ap</u>ple = 3)
 mapSum.insert("app", 2);    
 mapSum.sum("ap");           // return 5 (<u>ap</u>ple + <u>ap</u>p = 3 + 2 = 5)
-<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+</pre>
 
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>

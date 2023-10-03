@@ -15,14 +15,14 @@ class Trie:
             cur = cur.children[ord(ch) - ord('a')]
         cur.isTerminal += 1
 
-    def dfs(self, root, s, idx, pos):
+    def dfs(self, root, idx, pos):
         res = 0
         for i in range(26):
             if root.children[i]:
                 newIdx = bisect.bisect(pos[i], idx)
                 if newIdx == len(pos[i]):
                     continue
-                res += self.dfs(root.children[i], s, pos[i][newIdx], pos)
+                res += self.dfs(root.children[i],pos[i][newIdx], pos)
         return res + root.isTerminal
 
 class Solution:
@@ -33,4 +33,4 @@ class Solution:
         pos = [[] for _ in range(26)]
         for i, ch in enumerate(s):
             pos[ord(ch) - ord('a')].append(i)
-        return t.dfs(t.root, s, -1, pos)
+        return t.dfs(t.root, -1, pos)

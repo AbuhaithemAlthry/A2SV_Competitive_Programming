@@ -7,17 +7,17 @@
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input:</strong> words = ["w","wo","wor","worl","world"]
+<pre style="position: relative;"><strong>Input:</strong> words = ["w","wo","wor","worl","world"]
 <strong>Output:</strong> "world"
 <strong>Explanation:</strong> The word "world" can be built one character at a time by "w", "wo", "wor", and "worl".
-</pre>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
 
 <p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> words = ["a","banana","app","appl","ap","apply","apple"]
+<pre style="position: relative;"><strong>Input:</strong> words = ["a","banana","app","appl","ap","apply","apple"]
 <strong>Output:</strong> "apple"
 <strong>Explanation:</strong> Both "apply" and "apple" can be built from other words in the dictionary. However, "apple" is lexicographically smaller than "apply".
-</pre>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
 
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>

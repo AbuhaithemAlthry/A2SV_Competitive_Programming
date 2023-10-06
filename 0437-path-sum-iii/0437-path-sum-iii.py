@@ -6,29 +6,25 @@
 #         self.right = right
 class Solution:
     def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
+        if not root:
+            return 0
         dic = defaultdict(int)
-        dic[0] = 1
+        dic[0]=1
         ans = 0
-    
-        def recur(node,pre_sum):
-            nonlocal ans
-            if not node:
-                return
-            
-            pre_sum += node.val
-
-            if pre_sum - targetSum in dic:
-                ans += dic[pre_sum - targetSum]
-            
-            dic[pre_sum] += 1
-
-
-            recur(node.left,pre_sum)
-
-            recur(node.right,pre_sum)
-
-            dic[pre_sum]-=1
-
-        recur(root,0)
         
+        def dfs(node,prefixSum):
+            nonlocal ans
+            if prefixSum - targetSum in dic:
+                ans += dic[prefixSum - targetSum]
+                
+            dic[prefixSum]+=1
+            
+            if node.left:
+                dfs(node.left,prefixSum+node.left.val)
+            if node.right:
+                dfs(node.right,prefixSum+node.right.val)
+                
+            dic[prefixSum] -= 1
+        
+        dfs(root,root.val)
         return ans
